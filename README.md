@@ -2,6 +2,10 @@
 
 gap1年后重新开始学习开发
 
+TODO:
+1. 个人博客搭建文档
+2. 性能优化文档
+
 <!--
 **cala2cala/cala2cala** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
