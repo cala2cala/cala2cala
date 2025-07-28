@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-<!-- nyi0u65k0j5yi´9二甲∆∆¥¢∞ª i0e mnoie5 -->
-
 - 性能优化
   - [简介](/performanceOptimization/README.md)
+- 其他
+  - [搭建个人博客](/other/blog.md)
