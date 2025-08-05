@@ -24,7 +24,7 @@
 
 本地运行地址：http://localhost:3000/#/
 
-### 使用 github pages 变成公网可访问的个人博客
+### 使用 github pages 托管变成公网可访问的个人博客
 
 
 GitHub Pages 是 GitHub 提供的 免费静态网站托管服务，允许用户直接从 GitHub 仓库部署静态网页（HTML、CSS、JavaScript），无需服务器配置。它非常适合个人博客、项目文档、作品集等静态网站。
