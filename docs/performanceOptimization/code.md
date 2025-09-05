@@ -160,4 +160,4 @@ TODO具体实现参见webpack配置。
 
 - 后台处理：日志上报、数据预处理等不影响主线程的任务
 
-# TODO 前端工程中（webpack、vue.js）的性能优化
+# TODO 前端工程中（webpack、vue.js、babel）的性能优化
