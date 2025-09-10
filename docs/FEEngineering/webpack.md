@@ -13,29 +13,77 @@ Loader 的执行顺序是从右到左（从下到上）
 
 ### css 相关的loader
 
-### css-loader
+#### css-loader
 css-loader 的核心工作是解释（interpret）@import 和 url() 语句，并将 CSS 文件转换为 Webpack 能够理解的 JavaScript 模块。
 
-### style-loader
-将 CSS 注入到 DOM 中 - 它接收 CSS 代码（通常来自 css-loader 的处理结果），然后创建 <style> 标签并将 CSS 插入到 HTML 文档的 <head> 中。
+#### style-loader
+将 CSS 注入到 DOM 中 - 它接收 CSS 代码（通常来自 css-loader 的处理结果），然后创建 <style\> 标签并将 CSS 插入到 HTML 文档的 <head\> 中。
 
-### vue-style-loader
+#### vue-style-loader
 style-loader 的 "Vue 定制增强版"。
 继承了 style-loader 的所有核心功能，并在此基础上为 Vue 的单文件组件（.vue 文件）添加了服务器端渲染（SSR）和热重载（HMR）等关键特性的支持。
+
+### ts-loader
+主要工作是在 webpack 构建过程中，将 TypeScript 文件（.ts 或 .tsx）转换成 JavaScript 文件（.js），以便浏览器或 JavaScript 环境能够执行。
+
+### vue-loader
+它允许你以单文件组件（SFC）的形式编写 Vue 组件。
+- 单文件组件支持：允许将模板、脚本和样式放在一个 .vue 文件中
+
+- 预处理器支持：可以使用各种预处理器如 Pug、SCSS 和 TypeScript
+
+- 作用域 CSS：通过 scoped 属性实现组件样式封装
+
+- 热重载：在开发过程中保持应用状态的同时更新组件
+
+- 代码分割：支持异步组件和优化打包
+
+### babel-loader
+- 语法转换：将 ES6+ 语法转换为向后兼容的 JavaScript 版本
+
+- Polyfill 支持：通过 @babel/polyfill 提供缺失的内置功能
+
+- JSX 转换：将 JSX 语法转换为 JavaScript 函数调用
+
+- 代码优化：移除类型注释、压缩代码等
+
+- 浏览器兼容：确保代码在旧版浏览器中正常运行
 
 ## 插件(plugin)
 
 插件则可以用于执行范围更广的任务。包括：打包优化，资源管理，注入环境变量。
+插件列表：https://webpack.docschina.org/plugins/
 
 ### MiniCssExtractPlugin
 对于生产环境，我们通常不会用 style-loader（它会把样式注入到 JS 里），而是使用 mini-css-extract-plugin 对应的 loader。
 
-## webpack经典配置
+### HtmlWebpackPlugin
+HtmlWebpackPlugin 的主要作用是自动为你生成一个 HTML 文件（通常是 index.html），并自动将 webpack 打包好的 JavaScript 和 CSS 文件（bundle）注入到这个 HTML 文件中。
 
+解决如下问题：
+1. 自动创建 HTML 文件
+2. 自动注入资源
+3. 处理哈希文件名
+4. 提供模板系统
+5. 优化和压缩
 
-tree-shaking 
+### VueLoaderPlugin
+VueLoaderPlugin 是 vue-loader 的一个必需插件，它的主要作用是确保 webpack 能够正确处理 Vue 单文件组件（SFC）中的各种语言块（template、script、style）。
 
-拆包
+### CssMinimizerWebpackPlugin
+它使用 cssnano 来最小化 CSS，移除不必要的字符、注释和空白，从而显著减小 CSS 文件大小。
+
+### SplitChunksPlugin
+这是 webpack 中最重要且最强大的优化插件之一。
+SplitChunksPlugin 的主要作用是自动将你的代码拆分成多个更小的 chunk（包），以避免重复依赖，并更好地利用浏览器缓存。
+
+自动分析模块的依赖关系，将公共的依赖提取到单独的 chunk 中。
+
+1. 减少了总体积：避免了重复依赖。
+
+2. 优化了缓存策略：公共库变动频率低，可以长期缓存。
+
+3. 提升了加载性能：利用浏览器并行加载机制。
 
 ## Webpack Dev Server 做了那些事情
 1. 启动一个本地开发服务器( Express 框架构)
@@ -55,9 +103,6 @@ tree-shaking
 4. 应用更新：浏览器接收到通知后，HMR 运行时会尝试替换、添加或删除正在运行的应用程序中的模块，而无需完全刷新整个页面。这保留了应用程序的当前状态（例如，你在输入框里输入的文字、组件的状态等）。
 
 
-## chainWebpack用法
-
-webpack-chain 的语法
-
 ## 参考文档
 1. https://webpack.docschina.org/configuration/dev-server/#root
+2. https://github.com/neutrinojs/webpack-chain

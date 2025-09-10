@@ -1,0 +1,10 @@
+# webpack性能优化
+
+## 体积层面
+### webpack-bundle-analyzer
+用于分析和测量 webpack 构建过程中各个阶段和每个 loader/plugin 耗时的工具插件。它的主要作用是帮你精确地找到构建速度的瓶颈所在。
+
+## 时间方面：构建速度
+
+### speed-measure-webpack-plugin
+webpack-bundle-analyzer 是一个用于可视化分析 webpack 打包输出文件（bundle）构成的插件。它会生成一个交互式的树状图（ treemap），让你一目了然地看到最终生成的 JavaScript 包中到底包含了什么，以及每个模块的体积大小。
