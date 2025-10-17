@@ -10,14 +10,14 @@
 
 失去了用户，产品无法发挥价值。因此，提升用户的使用体验，避免体验问题，是性能优化的目标。
 
-
 ## 性能优化的指标
 
 我们需要一些指标来衡量网页性能。
 
-
 ### 核心性能指标
+
 Google 提出的 Core Web Vitals 是当前最常用的标准，涵盖用户体验的三大关键维度：
+
 - **Largest Contentful Paint (LCP)：衡量加载性能**。为了提供良好的用户体验，请尽力在网页开始加载的 2.5 秒内完成 LCP。
 - **Interaction To Next Paint (INP)：衡量响应速度**。为了提供良好的用户体验，请尽力将 INP 控制在 200 毫秒以内。
 - **Cumulative Layout Shift (CLS)：衡量视觉稳定性**。为了提供良好的用户体验，请尽力使 CLS 得分低于 0.1。
@@ -25,6 +25,7 @@ Google 提出的 Core Web Vitals 是当前最常用的标准，涵盖用户体�
 ### 其他性能指标
 
 #### 加载阶段指标
+
 - FP（First Paint，首次绘制）
 
 浏览器首次渲染任何像素（如背景色）。
@@ -38,15 +39,17 @@ Google 提出的 Core Web Vitals 是当前最常用的标准，涵盖用户体�
 页面完全可交互的时间（JS 已加载、主线程空闲）。
 
 #### 渲染与交互性能
+
 - FPS（Frames Per Second，帧率）
 
 动画或滚动时的流畅度（目标 ≥60 FPS）。
 
-
 ## 如何发现和定位性能问题？
+
 解决问题的第一步是发现问题。
 
 ### 本地性能检测工具
+
 Lighthouse（Chrome DevTools）：综合评分。
 
 WebPageTest：多地点测试加载速度。
@@ -54,21 +57,22 @@ WebPageTest：多地点测试加载速度。
 Chrome Performance Tab：分析运行时性能。
 
 ### 持续监控（RUM：Real User Monitoring）
+
 Google Analytics：统计真实用户加载时间。
 
 Sentry：监控页面卡顿和错误。
 
 APM：应用性能监控
 
-
 ## 优化网页性能
-- 网络层	CDN、HTTP/2、压缩、缓存
-- 资源加载	懒加载、预加载、异步加载
-- 渲染优化	减少重排、RAF、GPU 加速
-- 代码优化	Tree Shaking、Worker、内存管理
 
+- 网络层 CDN、HTTP/2、压缩、缓存
+- 资源加载 懒加载、预加载、异步加载
+- 渲染优化 减少重排、RAF、GPU 加速
+- 代码优化 Tree Shaking、Worker、内存管理
 
 ## 参考链接
+
 https://w3c.github.io/paint-timing/
 https://w3c.github.io/largest-contentful-paint/
 https://docs.google.com/document/d/1BR94tJdZLsin5poeet0XoTW60M0SjvOJQttKT-JK8HI/view?pli=1&tab=t.0#heading=h.tdqghbi9ia5d

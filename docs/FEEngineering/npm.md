@@ -1,6 +1,7 @@
 # npm
 
 ## npm原理
+
 npm 的原理可以概括为：
 
 一个中心化的数据库（注册表package.json） 存储包信息。
@@ -16,6 +17,7 @@ npm 的原理可以概括为：
 与 Node.js 的 require 机制紧密配合，使得模块能够被正确找到和加载。
 
 ## yarn和npm区别
+
 你正在维护一个 Monorepo，Yarn Workspaces 的成熟度可能更高。
 
 你更喜欢 Yarn 的命令行体验和输出日志。
@@ -25,6 +27,7 @@ npm 的原理可以概括为：
 你欣赏 Yarn 在安全性上的一些前瞻性设计。
 
 ### 什么是 Yarn Workspaces？
+
 Yarn Workspaces 是 Yarn 提供的一项功能，它允许你在一个顶级根包（通常是一个仓库）中管理多个子包（子项目）。它能够：
 
 - 自动链接依赖：如果 Workspace A 依赖 Workspace B，Yarn 会自动创建一个符号链接，而不是从 npm 注册表下载，让你在本地直接开发测试。
@@ -38,9 +41,11 @@ Yarn Workspaces 是 Yarn 提供的一项功能，它允许你在一个顶级根�
 ## pnpm和npm区别
 
 ### npm存在的问题
+
 幽灵依赖： 你可以在代码中直接 require('package-a')，即使它不在你的 package.json 的 dependencies 中，仅仅因为它是另一个依赖的子依赖并被提升到了顶层。这非常危险，一旦那个依赖不再依赖 package-a，你的代码就会报错。
 
-###  pnpm（内容可寻址存储 + 硬链接）：
+### pnpm（内容可寻址存储 + 硬链接）：
+
 - pnpm 在全局有一个存储中心（通常在 ~/.pnpm-store）。
 
 - 当你安装一个包时，pnpm 会：
@@ -52,6 +57,7 @@ Yarn Workspaces 是 Yarn 提供的一项功能，它允许你在一个顶级根�
 - 项目的 node_modules 结构是 嵌套的、符合依赖关系的，但同时又非常快速和节省空间。
 
 ## npx
+
 npx 是一个工具，它让你能非常方便地运行 Node.js 生态系统中（通过 npm 发布的）的包，而无需先全局安装它们。
 
 可以把 npx 理解为 “npm 包的执行器”。
@@ -64,7 +70,7 @@ npx 是一个工具，它让你能非常方便地运行 Node.js 生态系统中�
 # 旧的方式（现在不推荐了）
 npm install -g create-react-app  # 全局安装
 create-react-app my-app          # 然后才能使用
-``` 
+```
 
 这种方式有几个问题：
 
@@ -79,7 +85,7 @@ npx 完美地解决了这些问题：
 ```javascript
 # 现代的方式（推荐）
 npx create-react-app my-app
-``` 
+```
 
 当你运行这行命令时，npx 会做以下几件事：
 
@@ -92,20 +98,27 @@ npx create-react-app my-app
 运行结束后，下载的包会被清理掉，不会永久保存在你的电脑上。
 
 ## npx 的主要用途
+
 - 运行脚手架工具（最常见）：创建新项目。
+
 ```javascript
 npx create-react-app my-app （创建 React 项目）
 ```
+
 <!-- // npx create-vite\@latest my-app （创建 Vite 项目，\@\latest 指定最新版） -->
 
 <!-- // npx degit user\/repo my-project （使用 degit 克隆仓库） -->
+
 - 快速运行、测试某个包：想临时试试一个工具，比如一个代码检查器、一个 HTTP 服务器。
+
 ```javascript
 npx http-server （快速启动一个静态文件服务器）
 ```
+
 <!-- // npx cowsay "Hello World" （让一头牛说 Hello World）-->
 
 - 运行不同版本的包：轻松测试一个包在不同版本下的行为。
+
 ```javascript
 npx node@14 --version （临时使用 Node.js 14 来查看版本）
-``` 
+```

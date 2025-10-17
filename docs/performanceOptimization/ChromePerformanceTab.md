@@ -3,17 +3,18 @@
 ## Chrome DevTools
 
 - Performance 面板：记录和分析运行时性能
-运行时详细性能分析，开发中性能问题定位。
+  运行时详细性能分析，开发中性能问题定位。
 
 - Lighthouse：全面的性能审计工具
-从性能、无障碍功能、最佳做法、SEO4个维度进行评估，并给出具体的优化建议
+  从性能、无障碍功能、最佳做法、SEO4个维度进行评估，并给出具体的优化建议
 
 - Network 面板：分析网络请求和加载时间
 
 - Coverage 面板：检测未使用的CSS/JS代码
-在network网页下看JS文件代码覆盖率
+  在network网页下看JS文件代码覆盖率
 
 ### Performance 面板用法详解
+
 Performance面板(原Timeline面板)是浏览器开发者工具中用于分析页面运行时性能的强大工具。
 
 打开Chrome devtool，切换到performance面板，可以看到当前页面的主要性能指标。
@@ -22,6 +23,7 @@ Performance面板(原Timeline面板)是浏览器开发者工具中用于分析�
 点击「录制」或者「录制并重新加载」，稍等片刻，点击按钮结束录制，能看到性能分析结果。
 
 #### 面板区域解析
+
 录制完成后，面板分为几个主要区域：
 
 ##### 概览(Overview)：
@@ -45,12 +47,14 @@ NET：网络请求情况
 包括Loading、Scripting、Rendering、Painting等
 
 #### 快捷操作
+
 - 放大（Zoom In）：W
 - 缩小（Zoom In）：S
 - 平移时间轴，向左移动：A
 - 平移时间轴，向右移动：D
 
 ### 谷歌官方示例
+
 以Google官方示例为例，仓库地址:[点击这里](https://github.com/GoogleChrome/devtools-samples/tree/main/jank).
 
 页面访问地址：[点击这里](https://googlechrome.github.io/devtools-samples/jank/)。
@@ -58,7 +62,6 @@ NET：网络请求情况
 打开页面后，点击「Add 10」按钮，到页面动画明显卡顿后，记录性能，结果如下图。
 
 可以看到概览区域有红色，表示有掉帧卡顿。
-
 
 ![这是图片](https://raw.githubusercontent.com/cala2cala/image-hosting/main/wechat_2025-08-13_202058_104.png "performance面板")
 
@@ -70,12 +73,15 @@ NET：网络请求情况
 ![这是图片](https://raw.githubusercontent.com/cala2cala/image-hosting/main/微信图片_2025-08-13_203031_454.png "performance面板")
 
 ### 长任务
+
 定义：任何在主线程上连续执行超过 50ms 的 JavaScript 任务。
 
 ##### Google RAIL （Response Animation Idle Load）模型
+
 是一种以用户为中心的 性能优化方法论。
 
 ###### RAIL 模型的四个核心阶段：
+
 1. Response（响应）
 
 目标：在用户操作后 100ms 内 提供反馈（如点击按钮、输入文本）。
@@ -122,8 +128,6 @@ NET：网络请求情况
 
 压缩资源（WebP 图片、代码拆分）。
 
-
-
 #### 为什么超过50ms被认为长任务？
 
 50ms 预留缓冲：根据RAIL的100ms响应原则，为了保证在 100ms 内 完成响应（如点击、滚动等），需要预留一半时间（50ms）给浏览器处理其他任务（如渲染、事件处理等）。
@@ -131,7 +135,6 @@ NET：网络请求情况
 公式：用户操作（100ms） = 任务执行（50ms） + 浏览器其他工作（50ms）
 
 如果单个任务超过 50ms，可能挤占浏览器的时间预算，导致无法满足 100ms 的响应目标。
-
 
 ## 在线分析工具
 
@@ -142,19 +145,19 @@ NET：网络请求情况
 视频录制
 
 详细的水滴图分析
+
 - PageSpeed Insights (https://developers.google.com/speed/pagespeed/insights/)TODO打不开
 
 谷歌提供的性能分析
 
 移动和桌面分别评分
 
-
-##  性能监控工具
+## 性能监控工具
 
 在公司用的是基于web-vitals封装的自研apm平台。
 
-
 ## 参考链接
+
 - https://developer.chrome.com/docs/devtools/?hl=zh-cn
 - https://web.dev/articles/optimize-long-tasks?utm_source=devtools&utm_campaign=stable&hl=zh-cn
 - https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrashing?utm_source=devtools&utm_campaign=stable&hl=zh-cn#avoid-forced-synchronous-layouts

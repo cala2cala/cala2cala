@@ -1,7 +1,8 @@
 # 代码测量网页性能指标
-## 代码实现
-PerformanceObserver是专门用来测量网页性能的api。
 
+## 代码实现
+
+PerformanceObserver是专门用来测量网页性能的api。
 
 ### LCP (Largest Contentful Paint) - 最大内容绘制
 
@@ -9,7 +10,7 @@ PerformanceObserver是专门用来测量网页性能的api。
 const observer = new PerformanceObserver((entryList) => {
   const entries = entryList.getEntries(); // 获取所有性能条目
   const lastEntry = entries[entries.length - 1]; // 取最新的 LCP 记录
-  
+
   console.log("LCP:", lastEntry.renderTime || lastEntry.loadTime);
   console.log("LCP Element:", lastEntry.element); // 关联的 DOM 元素
 });
@@ -18,16 +19,17 @@ observer.observe({ type: "largest-contentful-paint", buffered: true });
 ```
 
 ### FCP (First Contentful Paint) - 首次内容绘制
+
 ```JavaScript
 // 创建 PerformanceObserver 监听 "paint" 类型条目
 const observer = new PerformanceObserver((list) => {
   const entries = list.getEntriesByName('first-contentful-paint');
-  
+
   if (entries.length > 0) {
     const fcp = entries[0];
     console.log('FCP:', fcp.startTime, 'ms');
     console.log('FCP Element:', fcp.element || '无关联元素');
-    
+
     // 停止监听（避免重复上报）
     observer.disconnect();
   }
@@ -38,6 +40,7 @@ observer.observe({ type: 'paint', buffered: true });
 ```
 
 ### FID (First Input Delay) - 首次输入延迟
+
 ```JavaScript
 let fidReported = false;
 
@@ -70,7 +73,9 @@ window.addEventListener('click', (e) => {
   console.log('Fallback FID:', delay, 'ms');
 }, { once: true, capture: true });
 ```
+
 ### TTI (Time to Interactive) - 可交互时间
+
 #### TTI 的算法逻辑（参考 Lighthouse）：
 
 - 找到 FCP（First Contentful Paint）。
@@ -78,6 +83,7 @@ window.addEventListener('click', (e) => {
 - 向后搜索 5s 静默窗口（无长任务阻塞主线程）。
 
 - 确认之前的网络请求 ≤ 2 个。
+
 ```JavaScript
 function calculateTTI() {
   return new Promise((resolve) => {
@@ -120,7 +126,9 @@ window.addEventListener('load', () => {
 });
 TODO 没看懂这个是怎么计算的？
 ```
+
 ## 使用现成库
+
 使用[web-vitals](https://github.com/GoogleChrome/web-vitals)获取性能数据。
 
 ```JavaScript
@@ -134,8 +142,8 @@ getFCP(console.log);
 getTTFB(console.log);
 ```
 
-
 ## Performance API 监测能力概览
+
 - 导航计时 (Navigation Timing)
 - 资源计时 (Resource Timing)
 - 用户自定义计时 (User Timing)
