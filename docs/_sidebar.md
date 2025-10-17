@@ -13,6 +13,8 @@
   - [sourcemap](/FEEngineering/sourcemap.md)
   - [前端打包工具](/FEEngineering/pack.md)
   - [webpack](/FEEngineering/webpack.md)
+  - [模块化](/FEEngineering/module.md)
+  - [npm](/FEEngineering/npm.md)
 - 其他
   - [搭建个人博客](/other/blog.md)
 

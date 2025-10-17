@@ -9,7 +9,10 @@ webpack 只能理解 JavaScript 和 JSON 文件，这是 webpack 开箱可用的
 
 loader 让 webpack 能够去处理其他类型的文件，并将它们转换为有效 模块，以供应用程序使用，以及被添加到依赖图中。
 
-Loader 的执行顺序是从右到左（从下到上）
+loader 的执行顺序是从右到左（从下到上）。
+
+loader是一个函数，被webpack实例调用，对源代码进行处理。
+
 
 ### css 相关的loader
 
@@ -53,6 +56,8 @@ style-loader 的 "Vue 定制增强版"。
 
 插件则可以用于执行范围更广的任务。包括：打包优化，资源管理，注入环境变量。
 插件列表：https://webpack.docschina.org/plugins/
+
+插件必须是一个类，通过new方法调用。必须有apply方法。调用Compiler的钩子函数实现功能。
 
 ### MiniCssExtractPlugin
 对于生产环境，我们通常不会用 style-loader（它会把样式注入到 JS 里），而是使用 mini-css-extract-plugin 对应的 loader。
