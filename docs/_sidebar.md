@@ -1,6 +1,7 @@
 <!-- docs/_sidebar.md -->
 
 - 网页性能优化
+
   - [性能优化概览](/performanceOptimization/base.md)
   - [网页性能指标](/performanceOptimization/api.md)
   - [代码测量网页性能指标](/performanceOptimization/PerformanceApi.md)
@@ -15,5 +16,7 @@
   - [webpack](/FEEngineering/webpack.md)
   - [模块化](/FEEngineering/module.md)
   - [npm](/FEEngineering/npm.md)
+- 微前端
+  - [实现 mini qiankun](/microFe/qiankun.md)
 - 其他
   - [搭建个人博客](/other/blog.md)
