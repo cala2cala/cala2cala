@@ -287,3 +287,7 @@ export class sandbox {
   }
 }
 ```
+
+## 项目 demo
+
+这里访问[demo](https://github.com/cala2cala/miniQiankun)可以下载和运行以上代码。
