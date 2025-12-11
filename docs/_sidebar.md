@@ -18,5 +18,6 @@
   - [npm](/FEEngineering/npm.md)
 - 微前端
   - [实现 mini qiankun](/microFe/qiankun.md)
+  - [Webpack5 Module Federation 初探](/microFe/webapackMF.md)
 - 其他
   - [搭建个人博客](/other/blog.md)

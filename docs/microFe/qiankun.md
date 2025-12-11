@@ -288,6 +288,50 @@ export class sandbox {
 }
 ```
 
+## CSS 隔离
+
+qiankun 中的 css 隔离有 3 种方案。
+方案 1 ：默认配置，沙箱可以确保单实例场景子应用之间的样式隔离，但是无法确保主应用跟子应用、或者多实例场景的子应用样式隔离。
+方案 2 ：当配置为 { strictStyleIsolation: true } 时表示开启严格的样式隔离模式。这种模式下 qiankun 会为每个微应用的容器包裹上一个 shadow dom 节点，从而确保微应用的样式不会对全局造成影响。
+方案 3 ：当 experimentalStyleIsolation 被设置为 true 时，qiankun 会改写子应用所添加的样式为所有样式规则增加一个特殊的选择器规则来限定其影响范围，因此改写后的代码会表达类似为如下结构：
+
+```javascript
+// 假设应用名是 react16
+.app-main {
+  font-size: 14px;
+}
+
+div[data-qiankun-react16] .app-main {
+  font-size: 14px;
+}
+```
+
+### 方案缺点
+
+方案 1 的缺点是子项目和主项目间没有隔离。
+
+方案 2 通过 Shadow DOM 实现，将子应用用 Shadow DOM 包起来实现隔离。Shadow DOM 是 Web Components 技术栈的核心部分，它允许将封装的 DOM 子树附加到常规 DOM 树中，但保持其独立性和隔离性。这样带来的问题是：
+
+1. 兼容性问题
+2. 可能会用到第三方 UI 库，比如 element-ui,第三方库的 dialog 组件、drawer 组件，当这些组件挂载到全局 document.body 时,但由于我们的子应用的样式只能作用于 shadow DOM 中，所以这些组件的样式是无法作用于 shadow DOM 中的，这样就会导致样式丢失的问题。
+3. 当我们按照常规思维去访问元素，是访问不到的，比如我们通过 document.getElementById('app')是访问不到的，因为 shadow DOM 是一个封闭的 DOM 树，我们无法访问到 shadow DOM 中的元素（当然可以通过改造获取，详见 shadowRoot 使用），这个问题很头疼。
+
+方案 3 通过重写 CSSRule 的方式，给样式添加一个前缀，这样就可以实现样式隔离了，但是这种方式也是有缺陷的，比如我们刚刚提到的第三方 UI 库的往 body 插入 modal 的样式丢失问题。
+
+## qiankun 父子项目通信
+
+不变更的数据通信可以使用 registerMicroApps API 里的 props 字段传数据。
+
+变更的数据通信建议采用官方 API initGlobalState 方法。父项目通过 initGlobalState 得到 actions 后，将 actions 通过 props 传给子项目。父子项目都调用 setGlobalState 方法更改数据，监听 actions 的 onGlobalStateChange 方法获取更新后的数据。数据存放在全局状态池，通过监听函数获取更新后的数据。
+
+actions 包含以下 3 个方法：
+
+1. offGlobalStateChange
+2. onGlobalStateChange
+3. setGlobalState
+
+具体使用方法可以参考 demo。
+
 ## 项目 demo
 
 这里访问[demo](https://github.com/cala2cala/miniQiankun)可以下载和运行以上代码。
