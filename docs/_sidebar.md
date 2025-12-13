@@ -16,6 +16,7 @@
   - [webpack](/FEEngineering/webpack.md)
   - [模块化](/FEEngineering/module.md)
   - [npm](/FEEngineering/npm.md)
+  - [pnpm](/FEEngineering/pnpm.md)
 - 微前端
   - [实现 mini qiankun](/microFe/qiankun.md)
   - [Webpack5 Module Federation 初探](/microFe/webapackMF.md)
