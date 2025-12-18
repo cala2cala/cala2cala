@@ -20,5 +20,7 @@
 - 微前端
   - [实现 mini qiankun](/microFe/qiankun.md)
   - [Webpack5 Module Federation 初探](/microFe/webapackMF.md)
+- 业务功能
+  - [配置化表单设计](/ui/form.md)
 - 其他
   - [搭建个人博客](/other/blog.md)
