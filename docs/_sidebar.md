@@ -22,5 +22,6 @@
   - [koa](/be/koajs.md)
 - 业务功能
   - [配置化表单设计](/ui/form.md)
+  - [高性能配置化表单](/ui/configForm.md)
 - 其他
   - [搭建个人博客](/other/blog.md)
