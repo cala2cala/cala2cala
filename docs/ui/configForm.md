@@ -100,3 +100,4 @@ flowchart LR
 ## 5. 项目地址
 
 - **GitHub**: [vue3-config-form-table](https://github.com/cala2cala/vue3-config-form-table)
+- [预览地址](https://cala2cala.github.io/vue3-config-form-table/) 
